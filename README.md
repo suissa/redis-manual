@@ -92,5 +92,16 @@ redis> get foo
 
 ##Chaves
 
-As chaves no Redis são [binary safe](http://en.wikipedia.org/wiki/Binary-safe), isso significa que você pode usar qualquer sequência de binários como uma chave, desde uma String como "nomadev" até o conteúdo de um arquivo JPEG, uma String vazia também é uma chave válida
+As chaves no Redis são [binary safe](http://en.wikipedia.org/wiki/Binary-safe), isso significa que você pode usar qualquer sequência de binários como uma chave, desde uma String como "nomadev" até o conteúdo de um arquivo JPEG, uma String vazia também é uma chave válida.
+
+Algumas regras sobre as chaves:
+
+- Chaves muito longas não são uma boa ideia, por exemplo uma chave com 1024 bytes é uma péssima ideia não apenas pensando na memória, mas também porque a pesquisa da chave no conjunto de dados pode necessitar de várias comparações de chave que são dispendiosas.
+- Muito chaves curtas, muitas vezes não são uma boa idéia. Não vale a pena por escrito "u1000flw" como uma chave se você pode, em vez escrever "usuario:1000:seguidores". Este último é mais legível e o espaço adicional é menor em comparação com o espaço usado pelo próprio objeto de chave e o objeto de valor. Enquanto chaves curtas, obviamente, consumirão um pouco menos memória, o seu trabalho é encontrar o equilíbrio certo.
+- Tente ficar com um esquema. Por exemplo "tipo de objeto: id" é uma boa idéia, como em "user:1000". Pontos ou traços são muitas vezes utilizados para campos com várias palavras, como em "comentario:1234:reply.to" ou "comentario: 1234:reply-to".
+- O máximo permitido tamanho da chave é 512 MB.
+
+
+
+
 
