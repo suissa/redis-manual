@@ -101,6 +101,12 @@ Algumas regras sobre as chaves:
 - Tente ficar com um esquema. Por exemplo "tipo de objeto: id" é uma boa idéia, como em "user:1000". Pontos ou traços são muitas vezes utilizados para campos com várias palavras, como em "comentario:1234:reply.to" ou "comentario: 1234:reply-to".
 - O máximo permitido tamanho da chave é 512 MB.
 
+##Strings
+
+O tipo String é o tipo mais simples de valor que você pode associar com uma chave Redis. É o único tipo de dados em Memcached, por isso também é muito natural para os recém-chegados para usá-lo em Redis.
+
+Desde que as chaves são strings, quando usamos o tipo de String como um valor também, estamos mapeando uma string para outra string. Esse tipo de dados é útil para uma série de casos de uso, como fragmentos de cache de HTML ou páginas.
+
 
 
 
